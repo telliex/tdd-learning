@@ -30,16 +30,22 @@ describe('This is FizzBuzz game',()=>{
     test('If this input number is normal number', () =>{
       expect(fizzBuzz.checkDivisibleAndContainNumber(76)).toBe('76');
     })
-    test('If the nember can be divisible by 3 and the nember contain 3',()=>{
-      expect(fizzBuzz.checkDivisibleAndContainNumber(33)).toBe('Fizz');
-      expect(fizzBuzz.checkDivisibleAndContainNumber(31)).toBe('Fizz');
-      expect(fizzBuzz.checkDivisibleAndContainNumber(23)).toBe('Fizz');
+    test.each`
+    num   | expected
+    ${33} |  ${'Fizz'}
+    ${31} |  ${'Fizz'}
+    ${23} |  ${'Fizz'}
+    `('If the nember can be divisible by 3 and the nember contain 3',({num,expected})=>{
+      expect(fizzBuzz.checkDivisibleAndContainNumber(num)).toBe(expected);
     })
 
-    test('If the nember can be divisible by 5 and the nember contain 5',()=>{
-      expect(fizzBuzz.checkDivisibleAndContainNumber(55)).toBe('Buzz');
-      expect(fizzBuzz.checkDivisibleAndContainNumber(25)).toBe('Buzz');
-      expect(fizzBuzz.checkDivisibleAndContainNumber(52)).toBe('Buzz');
+    test.each`
+    num   | expected
+    ${55} |  ${'Buzz'}
+    ${25} |  ${'Buzz'}
+    ${52} |  ${'Buzz'}
+    `('If the nember can be divisible by 5 and the nember contain 5',({num, expected})=>{
+      expect(fizzBuzz.checkDivisibleAndContainNumber(num)).toBe(expected);
     })
 
     test('If the number can be divisible by 3 and 5 ',()=>{

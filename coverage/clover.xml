@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1558854551008" clover="3.2.0">
-  <project timestamp="1558854551008" name="All files">
+<coverage generated="1558856469887" clover="3.2.0">
+  <project timestamp="1558856469887" name="All files">
     <metrics statements="16" coveredstatements="16" conditionals="20" coveredconditionals="20" methods="4" coveredmethods="4" elements="40" coveredelements="40" complexity="0" loc="16" ncloc="16" packages="1" files="1" classes="1"/>
     <file name="FizzBuzz.js" path="/Users/telliex/Desktop/tdd/FizzBuzz.js">
       <metrics statements="16" coveredstatements="16" conditionals="20" coveredconditionals="20" methods="4" coveredmethods="4"/>
