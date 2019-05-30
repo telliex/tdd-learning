@@ -1,15 +1,27 @@
+
+/**
+ * @description
+ * 任务1-1：写一个程序，打印出从 1 到 100 的数字，将其中3的倍数替换成“Fizz”，5的倍数替换成“Buzz”。既能被3整除、又能被5整除的数则替换成“FizzBuzz”。
+ * 任务1-2：如果一个数能被 3 整除，或者包含数字 3，那么这个数就是“Fizz”
+ *          如果一个数能被 5 整除，或者包含数字 5，那么这个数就是“Buzz”
+ * @export
+ * @class FizzBuzz
+ */
 export default class FizzBuzz{
+  constructor(){
+  }
   checkDivisibleNumber(inputNum){
-    if(this.isDivided(3,inputNum) && this.isDivided(5,inputNum)){
-      return 'FizzBuzz';
-    }
+    let result='';
     if(this.isDivided(3,inputNum)){
-      return 'Fizz';
+      result+='Fizz';
     }
     if(this.isDivided(5,inputNum)){
-      return 'Buzz';
+      result+='Buzz';
     }
-    return String(inputNum);
+    if(result===''){
+      result+=String(inputNum)
+    }
+    return result;
   }
 
   checkDivisibleAndContainNumber(inputNum){
