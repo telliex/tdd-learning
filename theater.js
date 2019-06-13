@@ -10,7 +10,8 @@ module.exports = function (invoice,plays){
     const format = new Intl.NumberFormat('en-US',{style:"currency",currency:"USD",minimumfractionDigits:2}).format; 
   
     for(let perf of invoice.performances){
-      const play=plays[perf.playID];
+      // 
+      const play=playFor(perf)
       
       let thisAmount=amountFor(perf,play);
 
@@ -32,24 +33,28 @@ module.exports = function (invoice,plays){
     return result;
   }
   
-function amountFor(perf,play){
+function amountFor(aPerformance,play){
   let thisAmount=0;
   switch(play.type){
     case "tragedy":
       thisAmount=40000;
-      if(perf.audience>30){
-        thisAmount += 1000*(perf.audience-30);
+      if(aPerformance.audience>30){
+        thisAmount += 1000*(aPerformance.audience-30);
       }
     break;
     case "comedy":
       thisAmount=30000;
-      if(perf.audience>20){
-        thisAmount += 10000+500*(perf.audience-20);
+      if(aPerformance.audience>20){
+        thisAmount += 10000+500*(aPerformance.audience-20);
       }
-      thisAmount += 300 * perf.audience;
+      thisAmount += 300 * aPerformance.audience;
     break;
     default:
       throw new Error(`unknow type : ${play.type}`);
   }
   return thisAmount;
+}
+
+function playFor(aPerformance){
+  return plays[aPerformance.playID];
 }
