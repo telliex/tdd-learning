@@ -1,21 +1,19 @@
 
-// let invoice= require('./invoice.json');
-// let plays= require('./plays.json');
 import createStatementData from './createStatementData.js'
 
- function statement(invoice,plays){
+export default function statement(invoice,plays){
   return renderplainText(createStatementData(invoice,plays));
 }
 
 
-function renderPlainText(data){
+function renderplainText(data){
   let result=`Statement for ${data.customer}\n`;
   for(let perf of data.performances){
       //print line for this order
     result += `${perf.play.type}: ${usd(perf.amount)} (${perf.audience} seats)\n`;
   } 
   result += `Amount owed is ${usd(data.totalAmount)}\n`;
-  result += `You earned ${data.totalVolumeCredits} credits\n`;
+  result += `You earned ${data.totalVolumeCredits} credits`;
 
   return result;
 }
@@ -44,3 +42,4 @@ function renderHtml(data){
 function usd(aNumber){
   return new Intl.NumberFormat('en-US',{style:"currency",currency:"USD",minimumfractionDigits:2}).format(aNumber/100); 
 }
+
